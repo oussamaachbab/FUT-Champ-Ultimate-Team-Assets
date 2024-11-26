@@ -1,0 +1,191 @@
+body{
+    background-image: url('src/assets/img/fifa-ultimate-team-22-black-background-block-desktop-01-ps4-ps5-en-09sep21.webp');
+    /* margin: 0%;
+    padding: 0%; */
+}
+
+
+.container{
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: space-between;
+    
+}
+
+
+.pitch-container {
+    background-image: url('src/assets/img/stadium_background.webp');
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 60%;
+    min-height: 700px;
+    /* height: 100%; */
+    /* height: auto; */
+    aspect-ratio: 16 / 9;  
+    background-color: #fff;
+
+    box-shadow: 90px 80px 40px 20px #0ff;
+}
+
+
+
+.players-container{
+    /* border: 1px solid white; */
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 545px; 
+    /* height: 100%; */
+    color: white;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px;
+}
+
+.first-section-players-container{
+    background-color: rgba(0, 0, 0, 0.208) ;
+    /* opacity: 30%; */
+    padding: 5px;
+    border-radius: 10px;
+}
+
+
+.add-delete-edit{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    height: 50px;
+    gap: 30px;
+}
+
+
+.add-delete-edit .add {
+    background-color: #CFDB31 ; 
+    color: or: black;
+    border-radius: 15%;
+    border: none;
+
+}
+
+.add-delete-edit .delete {
+    background-color: #CFDB31 ; 
+    color: or: black; 
+    border-radius: 15%;
+    border: none;
+
+}
+
+.add-delete-edit .edit {
+    background-color: #CFDB31 ; 
+    color: black;
+    border-radius: 15%;
+    border: none;
+
+}
+
+
+
+.avilable-palyers{
+    display: flex;
+    flex-wrap: wrap ;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+
+.test{
+    /* border: 1px solid white; */
+    position: relative;
+    width: 25%;
+    height: 150px;
+    background-image: url('src/assets/img/badge_gold.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.player-img{
+    background-image: url('src/assets/img/i.png');
+    position: absolute;
+    top: 51%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 60%;
+    height: 60%;
+}
+
+.total-rating{
+    color: black;
+    font-size: small;
+    left: 22px;
+    top: 8px;
+    position: absolute;
+}
+
+
+.player-name{
+    color: black;
+    position: absolute;
+    font-size: 0.5rem;
+    top: 64%;
+    left: 27%;
+}
+
+
+.palyer-ratings{
+    color: black;
+    font-size: 0.45rem;
+    position: absolute;
+    left: 25%;
+    top: 70%;
+}
+
+
+.ratings-names{
+    font-size: 0.26rem;
+    gap: 10%;
+    position: absolute;          
+    top: 12%;   
+}
+
+
+.flags{
+    display: flex;
+    flex-direction: row;
+}
+
+.flag{
+    background-image: url('https://cdn.sofifa.net/flags/ar.png');
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: 82%;
+    left: 39%;
+    width: 7%;
+    height: 7%;
+}
+
+
+/* .leaug{
+    background-image: url('https://cdn.sofifa.net/flags/ar.png');
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 8%;
+    height: 8%;
+} */
+
+.club{
+    background-image: url('https://cdn.sofifa.net/meta/team/239235/120.png');
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: 82%;
+    left: 55%;
+    width: 7%;
+    height: 7%;
+}
