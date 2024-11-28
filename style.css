@@ -25,9 +25,12 @@ body{
     /* height: auto; */
     aspect-ratio: 16 / 9;  
     background-color: #fff;
+    position: relative;
 
     box-shadow: 90px 80px 40px 20px #0ff;
 }
+
+
 
 
 
@@ -63,7 +66,7 @@ body{
 
 .add-delete-edit .add {
     background-color: #CFDB31 ; 
-    color: or: black;
+    color: black;
     border-radius: 15%;
     border: none;
 
@@ -71,7 +74,7 @@ body{
 
 .add-delete-edit .delete {
     background-color: #CFDB31 ; 
-    color: or: black; 
+    color: black; 
     border-radius: 15%;
     border: none;
 
@@ -188,4 +191,13 @@ body{
     left: 55%;
     width: 7%;
     height: 7%;
+}
+
+.palyer1{
+    position: absolute;
+    border: 1px solid white;
+    width: 25%;
+    height: 150px;
+    top: 50%;
+    left: 50%;
 }

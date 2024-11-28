@@ -353,7 +353,7 @@ const playersData = {
         "physical": 78
       },
       {
-        "name": "Youssef En-Nesyri",
+        "name": "jouj gouchiyat",
         "photo": "https://cdn.sofifa.net/players/235/410/25_120.png",
         "position": "ST",
         "nationality": "Morocco",
@@ -419,41 +419,175 @@ const playersData = {
     ]
   };
 
+  
 
 
-  const playersContainer = document.querySelector(".avilable-palyers");
 
+const playersContainer = document.querySelector(".avilable-palyers");
+const addaPlayer = document.getElementById("add-a-player-btn");
+const editaPlayer = document.getElementById("edit-a-player-btn");
+const submitAddaPlayer = document.getElementById("submit-add-a-player");
+
+addaPlayer.addEventListener('click', () => {
+  let addbtn = document.getElementById('add-a-player');
+
+  if(addbtn.style.display == 'none'){ 
+  addbtn.style.display = 'block';
+  }else{
+  addbtn.style.display = 'none';
+  }
+});
+
+
+editaPlayer.addEventListener('click', () => {
+  let editbtn = document.getElementById('edit-a-player');
+
+  if(editbtn.style.display == 'none'){ 
+  editbtn.style.display = 'block';
+  }else{
+  editbtn.style.display = 'none';
+  }
+});
+
+submitAddaPlayer.addEventListener('click', () => {
+  const playerName = document.getElementById('player-name').value;
+  const playerPosition = document.getElementById('player-position').value;
+  const playerClub = document.getElementById('player-club').value;
+  const playerRating = document.getElementById('player-rating').value;
+  const playerPace = document.getElementById('player-pace').value;
+  const playerShooting = document.getElementById('player-shooting').value;
+  const playerPassing = document.getElementById('player-passing').value;
+  const playerDribbling = document.getElementById('player-dribbling').value;
+  const playerDefending = document.getElementById('player-defending').value;
+  const playerPhysical = document.getElementById('player-physical').value;
+  const playerPhoto = document.getElementById('player-photo').value;
+  const playerNationality = document.getElementById('player-nationality').value;
+  const playerFlag = document.getElementById('player-flag').value;
+  const playerClubLogo = document.getElementById('player-club-logo').value;
+
+  const players = {
+    "name": playerName,
+    "position": playerPosition,
+    "club": playerClub,
+    "rating": playerRating,
+    "pace": playerPace,
+    "shooting": playerShooting,
+    "passing": playerPassing,
+    "dribbling": playerDribbling,
+    "defending": playerDefending,
+    "physical": playerPhysical,
+    "photo": playerPhoto,
+    "nationality": playerNationality,
+    "flag": playerFlag,
+    "logo": playerClubLogo
+  };
+
+  playersData.players.push(players);
+  playersSplit(playersData.players);
+  document.getElementById('add-a-player').style.display = 'none';
+});
+
+
+// for(let i = 0 ; i < data.players.length ; i++){
+
+// if(players.position === "GK"){
+//   function goalKeppers(players) { 
+//       playersContainer.innerHTML = ""; 
+//       players.forEach((player) => {
+//         const playerCard = `
+//           <div class="test">
+//             <div class="total-rating">
+//               <h6><span>${player.rating}</span><br><span>${player.position}</span></h6>
+//             </div>
+//             <div class="player-img" style="background-image: url('${player.photo}')"></div>
+//             <div class="player-name">${player.name}</div>
+//             <div class="palyer-ratings">
+//               <div class="ratings-names">
+//                 <span>PAC</span> <span>SHO</span> <span>PAS</span>
+//                 <span>DRI</span> <span>DEF</span> <span>PHY</span>
+//               </div>
+//               <br>
+//               <span>${player.diving}</span>
+//               <span>${player.handling}</span>
+//               <span>${player.kicking}</span>
+//               <span>${player.reflexes}</span>
+//               <span>${player.speed}</span>
+//               <span>${player.positioning}</span>
+//             </div>
+//             <div class="flags">
+//               <div class="flag" style="background-image: url('${player.flag}')"></div>
+//               <div class="club" style="background-image: url('${player.logo}')"></div>
+//             </div>
+//           </div>`;
+//         playersContainer.innerHTML += playerCard;
+//       });
+//     }
+//   }else{ 
 function playersSplit(players) {
   playersContainer.innerHTML = ""; 
   players.forEach((player) => {
-    const playerCard = `
-      <div class="test">
-        <div class="total-rating">
-          <h6><span>${player.rating}</span><br><span>${player.position}</span></h6>
-        </div>
-        <div class="player-img" style="background-image: url('${player.photo}')"></div>
-        <div class="player-name">${player.name}</div>
-        <div class="palyer-ratings">
-          <div class="ratings-names">
-            <span>PAC</span> <span>SHO</span> <span>PAS</span>
-            <span>DRI</span> <span>DEF</span> <span>PHY</span>
+    if(player.position == "GK"){
+      const playerCard = `
+                <div class="test">
+                  <div class="total-rating">
+                    <h6><span>${player.rating}</span><br><span>${player.position}</span></h6>
+                  </div>
+                  <div class="player-img" style="background-image: url('${player.photo}')"></div>
+                  <div class="player-name">${player.name}</div>
+                  <div class="palyer-ratings">
+                    <div class="ratings-names">
+                      <span>DIV </span> <span>HAN </span> <span>KIC </span>
+                      <span>REF </span> <span>SPD </span> <span>POS </span>
+                    </div>
+                    <br>
+                    <span>${player.diving} </span>
+                    <span>${player.handling} </span>
+                    <span>${player.kicking} </span>
+                    <span>${player.reflexes} </span>
+                    <span>${player.speed} </span>
+                    <span>${player.positioning} </span>
+                  </div>
+                  <div class="flags">
+                    <div class="flag" style="background-image: url('${player.flag}')"></div>
+                    <div class="club" style="background-image: url('${player.logo}')"></div>
+                  </div>
+                </div>`;
+              playersContainer.innerHTML += playerCard;
+    }else{ 
+      const playerCard = `
+        <div class="test">
+          <div class="total-rating">
+            <h6><span>${player.rating}</span><br><span>${player.position}</span></h6>
           </div>
-          <br>
-          <span>${player.pace}</span>
-          <span>${player.shooting}</span>
-          <span>${player.passing}</span>
-          <span>${player.dribbling}</span>
-          <span>${player.defending}</span>
-          <span>${player.physical}</span>
-        </div>
-        <div class="flags">
-          <div class="flag" style="background-image: url('${player.flag}')"></div>
-          <div class="club" style="background-image: url('${player.logo}')"></div>
-        </div>
-      </div>`;
-    playersContainer.innerHTML += playerCard;
+          <div class="player-img" style="background-image: url('${player.photo}')"></div>
+          <div class="player-name">${player.name}</div>
+          <div class="palyer-ratings">
+            <div class="ratings-names">
+              <span>PAC</span> <span>SHO</span> <span>PAS</span>
+              <span>DRI</span> <span>DEF</span> <span>PHY</span>
+            </div>
+            <br>
+            <span>${player.pace}</span>
+            <span>${player.shooting}</span>
+            <span>${player.passing}</span>
+            <span>${player.dribbling}</span>
+            <span>${player.defending}</span>
+            <span>${player.physical}</span>
+          </div>
+          <div class="flags">
+            <div class="flag" style="background-image: url('${player.flag}')"></div>
+            <div class="club" style="background-image: url('${player.logo}')"></div>
+          </div>
+        </div>`;
+      playersContainer.innerHTML += playerCard;
+    }
   });
 }
 
-playersSplit(playersData.players);
+
+
+
   
+
+playersSplit(playersData.players);
+// goalKeppers(playersData.players);

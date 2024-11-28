@@ -10,6 +10,17 @@
 
     <div class="container">
         <div class="pitch-container">
+            <div class="player1" id="palyer1"></div>
+            <div class="player2" id="palyer2"></div>
+            <div class="player3" id="palyer3"></div>
+            <div class="player4" id="palyer4"></div>
+            <div class="player5" id="palyer5"></div>
+            <div class="player6" id="palyer6"></div>
+            <div class="player7" id="palyer7"></div>
+            <div class="player8" id="palyer8"></div>
+            <div class="player9" id="palyer9"></div>
+            <div class="player10" id="palyer10"></div>
+            <div class="player11" id="palyer11"></div>
 
         </div>
 
@@ -31,16 +42,114 @@
                 <br><br><br>
 
                 <div class="add-delete-edit">
-                    <button class="add">ADD A PLAYER</button>
-                    <button class="delete">EDIT A PLAYER</button>
+                    <button id="add-a-player-btn" class="add">ADD A PLAYER</button>
+                    <button id="edit-a-player-btn" class="delete">EDIT A PLAYER</button>
                     <button class="edit">DELETE A PLAYER</button>
                 </div>  
             </div>
             
             <br><br><br>
+        <div class="add-a-player">    
+            <div style="display: none;" id="add-a-player">
+                <label for="search-a-player">player's Name :</label>
+                <input type="text" name="search-a-player" id="player-name" required><br><br>
+
+                <label for="search-a-player">player's picture :</label>
+                <input type="text" name="search-a-player" id="player-photo"><br><br>
+
+                <label for="search-a-player">player's natinqlity :</label>
+                <input type="text" name="search-a-player" id="player-nationality"><br><br>
+
+                <label for="position-add">select the palyer position</label>
+                <select name="position-add" id="player-position">
+                    <option value="ST">ST</option>
+                    <option value="RB">RB</option>
+                    <option value="LB">LB</option>
+                    <option value="CD">CD</option>
+                    <option value="CM">CM</option>
+                    <option value="LW">LW</option>
+                    <option value="RW">RW</option>
+                    <option value="GK">GK</option>
+                </select><br><br>
+
+                <label for="search-a-player">player's nationality :</label>
+                <input type="text" name="search-a-player" id="player-name" required><br><br>
+
+                <label for="search-a-player">player's nation flag :</label>
+                <input type="text" name="search-a-player" id="player-flag" required><br><br>
+
+                <label for="search-a-player">player's club :</label>
+                <input type="text" name="search-a-player" id="player-club" required><br><br>
+
+                <label for="search-a-player">player's club logo :</label>
+                <input type="text" name="search-a-player" id="player-club-logo" required><br><br>
+
+                <label for="search-a-player">player's total rating :</label>
+                <input type="text" name="search-a-player" id="player-rating" required><br><br>
+
+                <div style="display: block;" id="pitch-player-rating">
+                <label for="search-a-player">player's pace :</label>
+                <input type="text" name="search-a-player" id="player-pace" required><br><br>
+
+                <label for="search-a-player">player's shooting :</label>
+                <input type="text" name="search-a-player" id="player-shooting" required><br><br>
+
+                <label for="search-a-player">player's passing :</label>
+                <input type="text" name="search-a-player" id="player-passing" required><br><br>
+
+                <label for="search-a-player">player's dribbling :</label>
+                <input type="text" name="search-a-player" id="player-dribbling" required><br><br>
+
+                <label for="search-a-player">player's defending :</label>
+                <input type="text" name="search-a-player" id="player-defending" required><br><br>
+
+                <label for="search-a-player">player's physical :</label>
+                <input type="text" name="search-a-player" id="player-physical" required><br><br>
+
+                </div>
+
+
+                <div style="display: none;" id="gk-ratings">
+
+                <label for="search-a-player">player's diving :</label>
+                <input type="text" name="search-a-player" id="player-diving" required><br><br>
+
+                <label for="search-a-player">player's handling :</label>
+                <input type="text" name="search-a-player" id="player-handling" required><br><br>
+
+                <label for="search-a-player">player's kicking :</label>
+                <input type="text" name="search-a-player" id="player-kicking" required><br><br>
+
+                <label for="search-a-player">player's reflexes :</label>
+                <input type="text" name="search-a-player" id="player-reflexes" required><br><br>
+
+                <label for="search-a-player">player's speed :</label>
+                <input type="text" name="search-a-player" id="player-speed" required><br><br>
+
+                <label for="search-a-player">player's positining :</label>
+                <input type="text" name="search-a-player" id="player-positioning" required><br><br>
+                </div>
+
+                <button id="submit-add-a-player">SUBMIT</button>
+            </div>
+
+
+
+
+
+            <div style="display: none;" id="edit-a-player">
+                <h4>ENTER THE NAME OF THE PLAYER THAT YOU WANT TO EDIT:</h4>
+                <label for="edit-a-player">player's name :</label>
+                <input type="text" name="edit-a-player" id="player-name" required></input>
+            </div>
+
+                
+            </div>
+
+            <br><br><br>
 
             <div class="avilable-palyers">
-                <div class="test">
+                <div class="test" draggable="true">
                     <div class="total-rating">
                         <h6><span>90</span><br><span>CF</span></h6>                        
                     </div>
@@ -69,7 +178,7 @@
                         <div class="club"></div>
                     </div>
                 </div>
-                <div class="test">
+                <!-- <div class="test">
                     
                     <div class="player-img">
                         
@@ -211,7 +320,7 @@
                 </div>
             </div>
         </div>
-
+ -->
 
     </div>    
 
