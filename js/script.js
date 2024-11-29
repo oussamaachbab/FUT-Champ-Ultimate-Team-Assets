@@ -523,6 +523,10 @@ submitAddaPlayer.addEventListener('click', () => {
 //       });
 //     }
 //   }else{ 
+
+
+
+
 function playersSplit(players) {
   playersContainer.innerHTML = ""; 
   players.forEach((player) => {
@@ -626,17 +630,17 @@ tactil.addEventListener('change', ()=>{
   tactilo();
 })
 
+
 function tactilo() { 
   pitchContainer.innerHTML = ''; 
 
-  let playerPositions;
+  let playerPositions; 
 
-  if (choosenTactil == 433) {
+  if (choosenTactil === "433") {
     playerPositions = playerPositions433;
   } else {
     playerPositions = playerPositions442;
   }
-
 
   playerPositions.forEach((position) => {
     const slot = document.createElement("div");
@@ -645,9 +649,62 @@ function tactilo() {
     slot.style.position = "absolute";
     slot.style.top = position.top;
     slot.style.left = position.left;
+    
+    slot.dataset.position = position.position;
 
-    slot.addEventListener('click', () => {
-      assignPlayerToSlot(position.position, slot);
+    slot.addEventListener('click', (event) => {
+      const existingList = document.querySelector('.player-list');
+      if (existingList) {
+        existingList.remove();
+      }
+    
+      const list = document.createElement("div");
+      list.classList.add("player-list");
+    
+      const positionToShow = slot.dataset.position;
+      const filteredPlayers = playersData.players.filter(player => player.position === positionToShow);
+    
+      filteredPlayers.forEach((player) => {
+        const playerCard = `
+          <div class="test">
+            <div class="total-ratingg">
+              <h6><span>${player.rating}</span><br><span>${player.position}</span></h6>
+            </div>
+            <div class="player-image" style="background-image: url('${player.photo}')"></div>
+            <div class="player-namee">${player.name}</div>
+            <div class="palyer-ratingss">
+              <div class="ratings-namess">
+                <span>PAC</span> <span>SHO</span> <span>PAS</span>
+                <span>DRI</span> <span>DEF</span> <span>PHY</span>
+              </div>
+              <br>
+              <span>${player.pace || ''}</span>
+              <span>${player.shooting}</span>
+              <span>${player.passing}</span>
+              <span>${player.dribbling}</span>
+              <span>${player.defending}</span>
+              <span>${player.physical || ''}</span>
+            </div>
+            <div class="flags">
+              <div class="flag" style="background-image: url('${player.flag}')"></div>
+              <div class="club" style="background-image: url('${player.logo}')"></div>
+            </div>
+          </div>
+        `;
+        
+        list.innerHTML += playerCard;
+      });
+    
+      pitchContainer.appendChild(list);
+    
+      const closeList = (e) => {
+        if (!list.contains(e.target) && e.target !== slot) {
+          list.remove();
+          document.removeEventListener('click', closeList);
+        }
+      };
+    
+      document.addEventListener('click', closeList);
     });
 
     pitchContainer.appendChild(slot);
@@ -656,75 +713,112 @@ function tactilo() {
 
 
 
+// function assignPlayerToSlot(requiredPosition, slot) {
+//   const availablePlayerIndex = playersData.players.findIndex(player => player.position === requiredPosition);
 
-function assignPlayerToSlot(requiredPosition, slot) {
-  const availablePlayerIndex = playersData.players.findIndex(player => player.position === requiredPosition);
+//   let player;
+//   if (availablePlayerIndex !== -1) {
+//     player = playersData.players.splice(availablePlayerIndex, 1)[0]; 
+//   } else {
+//     player = playersData.players.find(player => player.position === requiredPosition);
+//   }
 
-  let player;
-  if (availablePlayerIndex !== -1) {
-    player = playersData.players.splice(availablePlayerIndex, 1)[0]; 
-  } else {
-    player = playersData.players.find(player => player.position === requiredPosition);
-  }
+//   if (player) {
+//     const playerElement = document.createElement("div");
+//     playerElement.classList.add("test");
 
-  if (player) {
-    const playerElement = document.createElement("div");
-    playerElement.classList.add("test");
+//     let playerStatsHTML = ""; 
+//     if (player.position === "GK") {
+//       playerStatsHTML = `
+//         <div class="ratings-names">
+//           <span>DIV</span> <span>HAN</span> <span>KIC</span>
+//           <span>REF</span> <span>SPD</span> <span>POS</span>
+//         </div>
+//         <br>
+//         <span>${player.diving}</span>
+//         <span>${player.handling}</span>
+//         <span>${player.kicking}</span>
+//         <span>${player.reflexes}</span>
+//         <span>${player.speed}</span>
+//         <span>${player.positioning}</span>
+//       `;
+//     } else {
+//       playerStatsHTML = `
+//         <div class="ratings-names">
+//           <span>PAC</span> <span>SHO</span> <span>PAS</span>
+//           <span>DRI</span> <span>DEF</span> <span>PHY</span>
+//         </div>
+//         <br>
+//         <span>${player.pace}</span>
+//         <span>${player.shooting}</span>
+//         <span>${player.passing}</span>
+//         <span>${player.dribbling}</span>
+//         <span>${player.defending}</span>
+//         <span>${player.physical}</span>
+//       `;
+//     }
 
-    let playerStatsHTML = ""; 
-    if (player.position === "GK") {
-      playerStatsHTML = `
-        <div class="ratings-names">
-          <span>DIV</span> <span>HAN</span> <span>KIC</span>
-          <span>REF</span> <span>SPD</span> <span>POS</span>
-        </div>
-        <br>
-        <span>${player.diving}</span>
-        <span>${player.handling}</span>
-        <span>${player.kicking}</span>
-        <span>${player.reflexes}</span>
-        <span>${player.speed}</span>
-        <span>${player.positioning}</span>
-      `;
-    } else {
-      playerStatsHTML = `
-        <div class="ratings-names">
-          <span>PAC</span> <span>SHO</span> <span>PAS</span>
-          <span>DRI</span> <span>DEF</span> <span>PHY</span>
-        </div>
-        <br>
-        <span>${player.pace}</span>
-        <span>${player.shooting}</span>
-        <span>${player.passing}</span>
-        <span>${player.dribbling}</span>
-        <span>${player.defending}</span>
-        <span>${player.physical}</span>
-      `;
-    }
+//     playerElement.innerHTML = `
+//       <div class="total-rating">
+//         <h6><span>${player.rating}</span><br><span>${player.position}</span></h6>
+//       </div>
+//       <div class="player-img" style="background-image: url('${player.photo}')"></div>
+//       <div class="player-name">${player.name}</div>
+//       <div class="palyer-ratings">${playerStatsHTML}</div>
+//       <div class="flags">
+//         <div class="flag" style="background-image: url('${player.flag}')"></div>
+//         <div class="club" style="background-image: url('${player.logo}')"></div>
+//       </div>
+//     `;
 
-    playerElement.innerHTML = `
-      <div class="total-rating">
-        <h6><span>${player.rating}</span><br><span>${player.position}</span></h6>
-      </div>
-      <div class="player-img" style="background-image: url('${player.photo}')"></div>
-      <div class="player-name">${player.name}</div>
-      <div class="palyer-ratings">${playerStatsHTML}</div>
-      <div class="flags">
-        <div class="flag" style="background-image: url('${player.flag}')"></div>
-        <div class="club" style="background-image: url('${player.logo}')"></div>
-      </div>
-    `;
+//     slot.textContent = ""; 
+//     slot.appendChild(playerElement);
+//     slot.classList = "pitchdis"
+//   }
+// }
 
-    slot.textContent = ""; 
-    slot.appendChild(playerElement);
-    slot.classList = "pitchdis"
-  }
-}
 
+let forwards = document.getElementById("forwards");
+let midfielders = document.getElementById("midfielders");
+let defenders = document.getElementById("defenders");
+let goalkeepers = document.getElementById("goalkeepers");
+
+
+// const ford = document.createElement('div');
+// ford.classList.add('player');
+// ford.innerHTML = `
+    
+//                   `;
+
+
+
+
+// const addPlayerToPitch = document.getElementById('add-a-player-to-pitch');
+
+// pitch-slot.addEventListener('click', ()=>{
+//   if(addPlayerToPitch.style.display == 'none'){
+//     addPlayerToPitch.style.display = 'block';
+//   }else{
+//     addPlayerToPitch.style.display = 'none';
+//   }
+// })
+
+
+
+// let testing = document.getElementById('forwards-players');
+// let playersHTML = ''; 
+
+// playersData.players.forEach(player => {
+//   playersHTML += `<div class="player-name">${player.name}</div>`;
+// });
+
+// testing.innerHTML = playersHTML;
 
 
 
 
 
 playersSplit(playersData.players);
+displayForwards();
+
 // goalKeppers(playersData.players);

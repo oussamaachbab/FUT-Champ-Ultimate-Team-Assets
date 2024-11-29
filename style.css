@@ -134,6 +134,48 @@ body {
     height: 60%;
 }
 
+.player-image{
+    position: absolute;
+    top: 44%;
+    left: 61%;
+    transform: translate(-50%, -50%);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 55%;
+    height: 40%;
+}
+
+.palyer-ratingss{
+    color: black;
+    font-size: 0.48rem;
+    position: absolute;
+    left: 35%;
+    top: 68%;
+}
+
+.ratings-namess{
+    font-size: 0.32rem;
+    gap: 19%;
+    position: absolute;          
+    top: 12%;   
+}
+
+.player-namee{
+    color: black;
+    position: absolute;
+    font-size: 0.5rem;
+    top: 63%;
+    left: 37.5%;
+}
+
+.total-ratingg{
+    color: black;
+    font-size: small;
+    left: 56px;
+    top: 9px;
+    position: absolute;
+}
+
 .total-rating {
     color: black;
     font-size: small;
@@ -239,6 +281,59 @@ input{
 }
 
 
+.general-posistions{
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+    background-color: gray;
+    padding-left: 2%;
+    border-radius: 5px;
+}
+
+#add-a-player-to-pitch{
+    border-left: 1px dotted gray;
+    border-right: 1px dotted gray;
+    border-bottom: 1px dotted gray;
+
+    border-radius: 20px;
+}
+
+
+
+
+.player-list {
+    position: absolute;
+    background-image: url(./src/assets/img/fifa-ultimate-team-22-black-background-block-desktop-01-ps4-ps5-en-09sep21.webp);
+    border: 1px solid #ccc;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.2rem;
+    gap: 2rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 5px;
+    padding: 10px;
+    height: 80%;
+    width: 80%;
+    margin-left: 15px;
+}
+
+
+
+/* .chooseing{
+    display: flex;
+    flex-direction: column;
+} */
+
+.player-img{
+    width: 35%;
+}
+
+
+
+
 
 
 @media (max-width: 768px) {
@@ -273,7 +368,6 @@ input{
         height: 40px;
     }
 }
-
 
 
 
