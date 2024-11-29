@@ -581,13 +581,150 @@ function playersSplit(players) {
         </div>`;
       playersContainer.innerHTML += playerCard;
     }
+
+  
+  });
+}
+
+
+
+const pitchContainer = document.querySelector(".pitch-container");
+
+const playerPositions433 = [
+  {position: "ST", top: "10%", left: "48%" },
+  {position: "LW", top: "20%", left: "20%" },
+  {position: "RW", top: "20%", left: "75%" },
+  {position: "CM", top: "40%", left: "15%" },
+  {position: "CDM", top: "45%", left: "47%" },
+  {position: "CM", top: "40%", left: "80%" },
+  {position: "CB", top: "70%", left: "30%" },
+  {position: "CB", top: "70%", left: "65%" },
+  {position: "LB", top: "63%", left: "10%" }, 
+  {position: "GK", top: "80%", left: "47%" },
+  {position: "RB", top: "63%", left: "85%" } 
+];
+const playerPositions442 = [
+  {position: "ST", top: "10%", left: "55%" },
+  {position: "LW", top: "10%", left: "41%" },
+  {position: "CM", top: "30%", left: "80%" },
+  {position: "CM", top: "30%", left: "15%" },
+  {position: "CM", top: "40%", left: "35%" },
+  {position: "CDM", top: "40%", left: "60%" },
+  {position: "CB", top: "70%", left: "30%" },
+  {position: "CB", top: "70%", left: "65%" },
+  {position: "LB", top: "63%", left: "10%" }, 
+  {position: "GK", top: "80%", left: "47%" },
+  {position: "RB", top: "63%", left: "85%" } 
+];
+
+let tactil = document.getElementById('tactil');
+let choosenTactil = tactil.value
+
+
+tactil.addEventListener('change', ()=>{
+  choosenTactil = tactil.value
+  tactilo();
+})
+
+function tactilo() { 
+  pitchContainer.innerHTML = ''; 
+
+  let playerPositions;
+
+  if (choosenTactil == 433) {
+    playerPositions = playerPositions433;
+  } else {
+    playerPositions = playerPositions442;
+  }
+
+
+  playerPositions.forEach((position) => {
+    const slot = document.createElement("div");
+    slot.classList.add("pitch-slot");
+    slot.textContent = "+"; 
+    slot.style.position = "absolute";
+    slot.style.top = position.top;
+    slot.style.left = position.left;
+
+    slot.addEventListener('click', () => {
+      assignPlayerToSlot(position.position, slot);
+    });
+
+    pitchContainer.appendChild(slot);
   });
 }
 
 
 
 
-  
+function assignPlayerToSlot(requiredPosition, slot) {
+  const availablePlayerIndex = playersData.players.findIndex(player => player.position === requiredPosition);
+
+  let player;
+  if (availablePlayerIndex !== -1) {
+    player = playersData.players.splice(availablePlayerIndex, 1)[0]; 
+  } else {
+    player = playersData.players.find(player => player.position === requiredPosition);
+  }
+
+  if (player) {
+    const playerElement = document.createElement("div");
+    playerElement.classList.add("test");
+
+    let playerStatsHTML = ""; 
+    if (player.position === "GK") {
+      playerStatsHTML = `
+        <div class="ratings-names">
+          <span>DIV</span> <span>HAN</span> <span>KIC</span>
+          <span>REF</span> <span>SPD</span> <span>POS</span>
+        </div>
+        <br>
+        <span>${player.diving}</span>
+        <span>${player.handling}</span>
+        <span>${player.kicking}</span>
+        <span>${player.reflexes}</span>
+        <span>${player.speed}</span>
+        <span>${player.positioning}</span>
+      `;
+    } else {
+      playerStatsHTML = `
+        <div class="ratings-names">
+          <span>PAC</span> <span>SHO</span> <span>PAS</span>
+          <span>DRI</span> <span>DEF</span> <span>PHY</span>
+        </div>
+        <br>
+        <span>${player.pace}</span>
+        <span>${player.shooting}</span>
+        <span>${player.passing}</span>
+        <span>${player.dribbling}</span>
+        <span>${player.defending}</span>
+        <span>${player.physical}</span>
+      `;
+    }
+
+    playerElement.innerHTML = `
+      <div class="total-rating">
+        <h6><span>${player.rating}</span><br><span>${player.position}</span></h6>
+      </div>
+      <div class="player-img" style="background-image: url('${player.photo}')"></div>
+      <div class="player-name">${player.name}</div>
+      <div class="palyer-ratings">${playerStatsHTML}</div>
+      <div class="flags">
+        <div class="flag" style="background-image: url('${player.flag}')"></div>
+        <div class="club" style="background-image: url('${player.logo}')"></div>
+      </div>
+    `;
+
+    slot.textContent = ""; 
+    slot.appendChild(playerElement);
+    slot.classList = "pitchdis"
+  }
+}
+
+
+
+
+
 
 playersSplit(playersData.players);
 // goalKeppers(playersData.players);

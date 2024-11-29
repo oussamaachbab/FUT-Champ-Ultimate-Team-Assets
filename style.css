@@ -1,18 +1,18 @@
-body{
+body {
     background-image: url('src/assets/img/fifa-ultimate-team-22-black-background-block-desktop-01-ps4-ps5-en-09sep21.webp');
-    /* margin: 0%;
-    padding: 0%; */
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
 }
 
-
-.container{
+.container {
     display: flex;
     flex-direction: row;
     align-items: start;
     justify-content: space-between;
-    
+    flex-wrap: wrap;
 }
-
 
 .pitch-container {
     background-image: url('src/assets/img/stadium_background.webp');
@@ -21,41 +21,45 @@ body{
     background-position: center;
     width: 60%;
     min-height: 700px;
-    /* height: 100%; */
-    /* height: auto; */
-    aspect-ratio: 16 / 9;  
+    aspect-ratio: 16 / 9;
     background-color: #fff;
     position: relative;
-
     box-shadow: 90px 80px 40px 20px #0ff;
 }
 
+.pitch-slot {
+    position: absolute; 
+    border: 3px solid white; 
+    border-radius: 50%;
+    width: 50px; 
+    height: 50px;
+    background-color: transparent; 
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    cursor: pointer;
+}
 
-
-
-
-.players-container{
-    /* border: 1px solid white; */
+.players-container {
     display: flex;
     flex-direction: column;
     width: 30%;
     height: 545px; 
-    /* height: 100%; */
     color: white;
     overflow-y: auto;
     overflow-x: hidden;
     padding: 20px;
 }
 
-.first-section-players-container{
-    background-color: rgba(0, 0, 0, 0.208) ;
-    /* opacity: 30%; */
+.first-section-players-container {
+    background-color: rgba(0, 0, 0, 0.208);
     padding: 5px;
     border-radius: 10px;
 }
 
-
-.add-delete-edit{
+.add-delete-edit {
     display: flex;
     flex-direction: row;
     gap: 5px;
@@ -63,43 +67,43 @@ body{
     gap: 30px;
 }
 
-
-.add-delete-edit .add {
-    background-color: #CFDB31 ; 
-    color: black;
-    border-radius: 15%;
-    border: none;
-
-}
-
-.add-delete-edit .delete {
-    background-color: #CFDB31 ; 
-    color: black; 
-    border-radius: 15%;
-    border: none;
-
-}
-
+.add-delete-edit .add,
+.add-delete-edit .delete,
 .add-delete-edit .edit {
-    background-color: #CFDB31 ; 
+    background-color: #CFDB31; 
     color: black;
-    border-radius: 15%;
+    border-radius: 15px;
     border: none;
-
+    cursor: pointer;
 }
 
+.add-delete-edit .add:hover{
+    width: 120px;
+    height: 55px;
+    background-color: green;
+    cursor: pointer;
+}
+.add-delete-edit .delete:hover{
+    width: 120px;
+    height: 55px;
+    background-color: green;
+    cursor: pointer;
+}
+.add-delete-edit .edit:hover{
+    width: 120px;
+    height: 55px;
+    background-color: green;
+    cursor: pointer;
+}
 
-
-.avilable-palyers{
+.avilable-palyers {
     display: flex;
-    flex-wrap: wrap ;
+    flex-wrap: wrap;
     justify-content: space-between;
     gap: 20px;
 }
 
-
-.test{
-    /* border: 1px solid white; */
+.test {
     position: relative;
     width: 25%;
     height: 150px;
@@ -109,7 +113,16 @@ body{
     background-position: center;
 }
 
-.player-img{
+.pitchdis {
+    position: relative;
+    width: 47%;
+    height: 0px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.player-img {
     background-image: url('src/assets/img/i.png');
     position: absolute;
     top: 51%;
@@ -121,7 +134,7 @@ body{
     height: 60%;
 }
 
-.total-rating{
+.total-rating {
     color: black;
     font-size: small;
     left: 22px;
@@ -129,8 +142,7 @@ body{
     position: absolute;
 }
 
-
-.player-name{
+.player-name {
     color: black;
     position: absolute;
     font-size: 0.5rem;
@@ -138,8 +150,7 @@ body{
     left: 27%;
 }
 
-
-.palyer-ratings{
+.palyer-ratings {
     color: black;
     font-size: 0.45rem;
     position: absolute;
@@ -147,21 +158,19 @@ body{
     top: 70%;
 }
 
-
-.ratings-names{
+.ratings-names {
     font-size: 0.26rem;
     gap: 10%;
     position: absolute;          
     top: 12%;   
 }
 
-
-.flags{
+.flags {
     display: flex;
     flex-direction: row;
 }
 
-.flag{
+.flag {
     background-image: url('https://cdn.sofifa.net/flags/ar.png');
     position: absolute;
     background-repeat: no-repeat;
@@ -172,17 +181,7 @@ body{
     height: 7%;
 }
 
-
-/* .leaug{
-    background-image: url('https://cdn.sofifa.net/flags/ar.png');
-    position: absolute;
-    background-repeat: no-repeat;
-    background-size: contain;
-    width: 8%;
-    height: 8%;
-} */
-
-.club{
+.club {
     background-image: url('https://cdn.sofifa.net/meta/team/239235/120.png');
     position: absolute;
     background-repeat: no-repeat;
@@ -193,7 +192,7 @@ body{
     height: 7%;
 }
 
-.palyer1{
+.palyer1 {
     position: absolute;
     border: 1px solid white;
     width: 25%;
@@ -201,3 +200,106 @@ body{
     top: 50%;
     left: 50%;
 }
+
+#submit-add-a-player{
+    width: 150px;
+    height: 40px;
+    background-color: #CFDB31;
+    color: black;
+    font-size: large;
+    border-radius: 10px;
+    border: #CFDB31;
+    /* border-radius: 50%; */
+}
+
+#submit-add-a-player:hover{
+    width: 155px;
+    height: 45px;
+    background-color: green;
+    cursor: pointer;
+}
+
+input{
+    width: 55%;
+    height: 22px;
+    background-color: rgb(41, 229, 229);
+    border-radius: 10px;
+
+}
+
+#player-position{
+    background-color: rgb(41, 229, 229);
+    border-radius: 5px;
+
+}
+
+#tactil{
+    background-color: rgb(41, 229, 229);
+    border-radius: 5px;
+}
+
+
+
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pitch-container {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        box-shadow: none;
+    }
+
+    .players-container {
+        width: 100%;
+        height: auto;
+    }
+
+    .test {
+        width: 48%;
+        height: 120px;
+    }
+
+    .avilable-palyers {
+        justify-content: space-around;
+    }
+
+    .pitch-slot {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+
+
+
+
+
+@media (max-width: 480px) {
+    .test {
+        width: 100%;
+        height: 100px;
+    }
+
+    .pitch-container {
+        width: 100%;
+        min-height: 500px;
+        box-shadow: none;
+    }
+
+    .players-container {
+        width: 100%;
+        height: auto;
+    }
+
+    .pitch-slot {
+        width: 35px;
+        height: 35px;
+    }
+}
+
