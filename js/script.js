@@ -427,6 +427,7 @@ const playersContainer = document.querySelector(".avilable-palyers");
 const addaPlayer = document.getElementById("add-a-player-btn");
 const editaPlayer = document.getElementById("edit-a-player-btn");
 const submitAddaPlayer = document.getElementById("submit-add-a-player");
+const deleteaPlayerbtn = document.getElementById("delete-a-player-btn");
 
 addaPlayer.addEventListener('click', () => {
   let addbtn = document.getElementById('add-a-player');
@@ -446,6 +447,16 @@ editaPlayer.addEventListener('click', () => {
   editbtn.style.display = 'block';
   }else{
   editbtn.style.display = 'none';
+  }
+});
+
+deleteaPlayerbtn.addEventListener('click', () => {
+  let deleteaPlayer = document.getElementById('delete-a-player');
+
+  if (deleteaPlayer.style.display === 'none') {
+      deleteaPlayer.style.display = 'block';
+  } else {
+      deleteaPlayer.style.display = 'none';
   }
 });
 
@@ -486,6 +497,49 @@ submitAddaPlayer.addEventListener('click', () => {
   playersSplit(playersData.players);
   document.getElementById('add-a-player').style.display = 'none';
 });
+
+
+
+const deletePlayerInput = document.getElementById('player-delete-name');
+const deletePlayerSubmit = document.createElement('button');
+deletePlayerSubmit.textContent = "Confirm Delete";
+deletePlayerSubmit.className = "confirm-delete-btn";
+
+deletePlayerSubmit.addEventListener('click', () => {
+    const playerName = deletePlayerInput.value.trim();
+    
+    if (playerName === "") {
+        alert("Please enter a valid player name!");
+        return;
+    }
+
+    const playerIndex = playersData.players.findIndex(player => player.name.toLowerCase() === playerName.toLowerCase());
+
+    if (playerIndex !== -1) {
+        playersData.players.splice(playerIndex, 1);
+
+        playersSplit(playersData.players);
+        alert(`${playerName} has been deleted successfully!`);
+
+        deletePlayerInput.value = "";
+    } else {
+      let ifplayerwasnotfound = document.createElement('h4');
+      ifplayerwasnotfound.textContent = "Player not found";
+      ifplayerwasnotfound.style.color = "red";
+      ifplayerwasnotfound.id = "player-not-found";
+  
+      const deleteSection = document.getElementById('delete-a-player');
+  
+      const existingMessage = document.getElementById('player-not-found');
+      if (!existingMessage) {
+          deleteSection.appendChild(ifplayerwasnotfound);
+      }
+  }
+});
+
+const deleteSection = document.getElementById('delete-a-player');
+deleteSection.appendChild(deletePlayerSubmit);
+
 
 
 // for(let i = 0 ; i < data.players.length ; i++){
@@ -710,6 +764,7 @@ function tactilo() {
 
 
           if (player.position == "GK") {
+            slot.innerHTML =
           `<div class="test-pitch">
           <div class="total-rating-pitch">
             <h6><span>${player.rating}</span><br><span>${player.position}</span></h6>
@@ -718,8 +773,8 @@ function tactilo() {
           <div class="player-name">${player.name}</div>
           <div class="palyer-ratings">
             <div class="ratings-names">
-              <span>PAC</span> <span>SHO</span> <span>PAS</span>
-              <span>DRI</span> <span>DEF</span> <span>PHY</span>
+              <span>DIV </span> <span>HAN </span> <span>KIC </span>
+              <span>REF </span> <span>SPD </span> <span>POS </span>
             </div>
             <br>
             <span>${player.diving} </span>
@@ -734,7 +789,7 @@ function tactilo() {
             <div class="club" style="background-image: url('${player.logo}')"></div>
           </div>
         </div>`;
-          }eles{ 
+          }else{ 
           slot.innerHTML = `<div class="test-pitch">
           <div class="total-rating-pitch">
             <h6><span>${player.rating}</span><br><span>${player.position}</span></h6>
