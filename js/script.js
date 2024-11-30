@@ -638,8 +638,10 @@ function tactilo() {
 
   if (choosenTactil === "433") {
     playerPositions = playerPositions433;
-  } else {
+  } else if (choosenTactil === "442") {
     playerPositions = playerPositions442;
+  } else {
+    return;
   }
 
   playerPositions.forEach((position) => {
@@ -652,7 +654,7 @@ function tactilo() {
     
     slot.dataset.position = position.position;
 
-    slot.addEventListener('click', (event) => {
+    slot.addEventListener('click', () => {
       const existingList = document.querySelector('.player-list');
       if (existingList) {
         existingList.remove();
@@ -665,36 +667,105 @@ function tactilo() {
       const filteredPlayers = playersData.players.filter(player => player.position === positionToShow);
     
       filteredPlayers.forEach((player) => {
-        const playerCard = `
-          <div class="test">
-            <div class="total-ratingg">
-              <h6><span>${player.rating}</span><br><span>${player.position}</span></h6>
+        
+        const playerCard = document.createElement("div");
+        playerCard.classList.add("test");
+        playerCard.style.cursor = "pointer";
+        
+        playerCard.innerHTML = `
+          <div class="total-ratingg">
+            <h6><span>${player.rating}</span><br><span>${player.position}</span></h6>
+          </div>
+          <div class="player-image" style="background-image: url('${player.photo}')"></div>
+          <div class="player-namee">${player.name}</div>
+          <div class="palyer-ratingss">
+            <div class="ratings-namess">
+              <span>PAC</span> <span>SHO</span> <span>PAS</span>
+              <span>DRI</span> <span>DEF</span> <span>PHY</span>
             </div>
-            <div class="player-image" style="background-image: url('${player.photo}')"></div>
-            <div class="player-namee">${player.name}</div>
-            <div class="palyer-ratingss">
-              <div class="ratings-namess">
-                <span>PAC</span> <span>SHO</span> <span>PAS</span>
-                <span>DRI</span> <span>DEF</span> <span>PHY</span>
-              </div>
-              <br>
-              <span>${player.pace || ''}</span>
-              <span>${player.shooting}</span>
-              <span>${player.passing}</span>
-              <span>${player.dribbling}</span>
-              <span>${player.defending}</span>
-              <span>${player.physical || ''}</span>
-            </div>
-            <div class="flags">
-              <div class="flag" style="background-image: url('${player.flag}')"></div>
-              <div class="club" style="background-image: url('${player.logo}')"></div>
-            </div>
+            <br>
+            <span>${player.pace || ''}</span>
+            <span>${player.shooting}</span>
+            <span>${player.passing}</span>
+            <span>${player.dribbling}</span>
+            <span>${player.defending}</span>
+            <span>${player.physical || ''}</span>
+          </div>
+          <div class="flags">
+            <div class="flag" style="background-image: url('${player.flag}')"></div>
+            <div class="club" style="background-image: url('${player.logo}')"></div>
           </div>
         `;
         
-        list.innerHTML += playerCard;
+        
+        playerCard.addEventListener('click', () => {
+        
+          const currentLeft = parseFloat(slot.style.left);
+          slot.style.left = `${currentLeft - 4}%`;
+          
+          slot.textContent = ""; 
+          slot.style.border = "none";
+          slot.style.width = "150px";
+          slot.style.height = "150px";
+
+
+          if (player.position == "GK") {
+          `<div class="test-pitch">
+          <div class="total-rating-pitch">
+            <h6><span>${player.rating}</span><br><span>${player.position}</span></h6>
+          </div>
+          <div class="player-img-pitch" style="background-image: url('${player.photo}')"></div>
+          <div class="player-name">${player.name}</div>
+          <div class="palyer-ratings">
+            <div class="ratings-names">
+              <span>PAC</span> <span>SHO</span> <span>PAS</span>
+              <span>DRI</span> <span>DEF</span> <span>PHY</span>
+            </div>
+            <br>
+            <span>${player.diving} </span>
+            <span>${player.handling} </span>
+            <span>${player.kicking} </span>
+            <span>${player.reflexes} </span>
+            <span>${player.speed} </span>
+            <span>${player.positioning} </span>
+            </div>
+          <div class="flags">
+            <div class="flag" style="background-image: url('${player.flag}')"></div>
+            <div class="club" style="background-image: url('${player.logo}')"></div>
+          </div>
+        </div>`;
+          }eles{ 
+          slot.innerHTML = `<div class="test-pitch">
+          <div class="total-rating-pitch">
+            <h6><span>${player.rating}</span><br><span>${player.position}</span></h6>
+          </div>
+          <div class="player-img-pitch" style="background-image: url('${player.photo}')"></div>
+          <div class="player-name">${player.name}</div>
+          <div class="palyer-ratings">
+            <div class="ratings-names">
+              <span>PAC</span> <span>SHO</span> <span>PAS</span>
+              <span>DRI</span> <span>DEF</span> <span>PHY</span>
+            </div>
+            <br>
+            <span>${player.pace}</span>
+            <span>${player.shooting}</span>
+            <span>${player.passing}</span>
+            <span>${player.dribbling}</span>
+            <span>${player.defending}</span>
+            <span>${player.physical}</span>
+          </div>
+          <div class="flags">
+            <div class="flag" style="background-image: url('${player.flag}')"></div>
+            <div class="club" style="background-image: url('${player.logo}')"></div>
+          </div>
+        </div>`;}
+          slot.classList.add("pitch-slot-filled"); 
+          list.remove(); 
+        });
+
+        list.appendChild(playerCard);
       });
-    
+      
       pitchContainer.appendChild(list);
     
       const closeList = (e) => {
@@ -710,6 +781,11 @@ function tactilo() {
     pitchContainer.appendChild(slot);
   });
 }
+
+
+
+
+
 
 
 
@@ -813,6 +889,8 @@ let goalkeepers = document.getElementById("goalkeepers");
 // });
 
 // testing.innerHTML = playersHTML;
+
+
 
 
 

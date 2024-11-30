@@ -19,20 +19,23 @@ body {
     background-size: cover; 
     background-repeat: no-repeat;
     background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 60%;
     min-height: 700px;
-    aspect-ratio: 16 / 9;
+    /* aspect-ratio: 16 / 9; */
     background-color: #fff;
     position: relative;
     box-shadow: 90px 80px 40px 20px #0ff;
 }
 
 .pitch-slot {
-    position: absolute; 
+    position: relative; 
     border: 3px solid white; 
     border-radius: 50%;
-    width: 50px; 
-    height: 50px;
+    width: 4%; 
+    height: 4%;
     background-color: transparent; 
     color: white;
     display: flex;
@@ -111,6 +114,7 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    
 }
 
 .pitchdis {
@@ -120,6 +124,37 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.test-pitch{
+    position: relative;
+    width:  100%;
+    height: 100%;
+    background-image: url('src/assets/img/badge_gold.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
+
+.total-rating-pitch{
+    position: absolute;
+    font-size: 0.8rem;
+    color: black;
+    left: 25%;
+    top: 8%;
+}
+
+.player-img-pitch{
+    background-image: url('src/assets/img/i.png');
+    position: absolute;
+    top: 46%;
+    left: 49%;
+    transform: translate(-50%, -50%);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 35%;
+    height: 35%;
 }
 
 .player-img {
@@ -318,6 +353,8 @@ input{
     height: 80%;
     width: 80%;
     margin-left: 15px;
+    overflow-y: auto;
+
 }
 
 
