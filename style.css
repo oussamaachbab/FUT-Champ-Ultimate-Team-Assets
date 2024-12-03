@@ -160,13 +160,13 @@ body {
 .player-img {
     background-image: url('src/assets/img/i.png');
     position: absolute;
-    top: 51%;
+    top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-size: contain;
     background-repeat: no-repeat;
-    width: 60%;
-    height: 60%;
+    width: 100%;
+    height: 100%;
 }
 
 .player-image{
@@ -289,11 +289,53 @@ body {
     /* border-radius: 50%; */
 }
 
+
+
+
 #submit-add-a-player:hover{
     width: 155px;
     height: 45px;
     background-color: green;
     cursor: pointer;
+}
+
+.submit-add-a-goalkeeper{
+    width: 150px;
+    height: 40px;
+    background-color: #CFDB31;
+    color: black;
+    font-size: large;
+    border-radius: 10px;
+    border: #CFDB31;
+}
+
+
+.submit-add-a-goalkeeper:hover{
+    width: 155px;
+    height: 45px;
+    background-color: green;
+    cursor: pointer; 
+}
+
+
+
+.confirm-delete-btn{
+    width: 150px;
+    height: 40px;
+    background-color: #CFDB31;
+    color: black;
+    font-size: large;
+    border-radius: 10px;
+    border: #CFDB31;  
+    margin-top: 10px;
+}
+
+
+.confirm-delete-btn:hover{
+    width: 155px;
+    height: 45px;
+    background-color: green;
+    cursor: pointer; 
 }
 
 input{
@@ -368,7 +410,15 @@ input{
     width: 35%;
 }
 
+@media (max-width: 1024px) {
+    .pitch-container{
+        box-shadow: none;
+    }
 
+    .test-pitch{
+        right: 15%;
+    }
+}
 
 
 
@@ -392,8 +442,8 @@ input{
     }
 
     .test {
-        width: 48%;
-        height: 120px;
+        width: 150px;
+        height: 150px;
     }
 
     .avilable-palyers {
@@ -413,14 +463,22 @@ input{
 
 @media (max-width: 480px) {
     .test {
-        width: 100%;
-        height: 100px;
+        width: 120px;
+        height: 120px;
+    }
+
+    .test-pitch{
+        width: 110px;
+        height: 120px;
+        bottom: 30%;
+        right: 25%;
     }
 
     .pitch-container {
         width: 100%;
         min-height: 500px;
         box-shadow: none;
+    
     }
 
     .players-container {
@@ -431,6 +489,20 @@ input{
     .pitch-slot {
         width: 35px;
         height: 35px;
+    }
+}
+
+
+
+@media (max-width: 380px) {
+    .test-pitch{
+        width: 110px;
+        height: 110px;
+    }
+
+    .test{
+        width: 140px;
+        height: 140px;
     }
 }
 
