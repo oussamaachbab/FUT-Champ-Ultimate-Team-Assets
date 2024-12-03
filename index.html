@@ -50,16 +50,18 @@
             </div>
             
             <br><br><br>
+
+            <form action="">
         <div class="add-a-player">    
             <div style="display: none;" id="add-a-player">
                 <label for="search-a-player">player's Name :</label>
                 <input type="text" name="search-a-player" id="player-name" required><br><br>
 
                 <label for="search-a-player">player's picture :</label>
-                <input type="text" name="search-a-player" id="player-photo"><br><br>
+                <input type="text" name="search-a-player" id="player-photo" required><br><br>
 
                 <label for="search-a-player">player's natinqlity :</label>
-                <input type="text" name="search-a-player" id="player-nationality"><br><br>
+                <input type="text" name="search-a-player" id="player-nationality" required><br><br>
 
                 <label for="position-add">select the palyer position</label>
                 <select name="position-add" id="player-position">
@@ -137,6 +139,7 @@
 
                 
             </div>
+        </form>
 
 
 
@@ -155,8 +158,7 @@
 
 
 
-
-
+        <form action="">
             <div class="add-a-goalkeeper">    
                 <div style="display: none;" id="add-a-goalkeeper">
                     <label for="search-a-player">player's Name :</label>
@@ -212,6 +214,7 @@
                     
                 </div>
 
+            </form>
 
 
 
@@ -294,25 +297,24 @@
 
 
 
-
-
+<!-- 
             <div style="display: none;" id="edit-a-player">
                 <h4>ENTER THE NAME OF THE PLAYER THAT YOU WANT TO EDIT:</h4>
                 <label for="edit-a-player">player's name :</label>
                 <input type="text" name="edit-a-player" id="player-name" required></input>
             </div>
+ -->
 
 
 
 
-
-
+            <form action="">
             <div style="display: none;" id="delete-a-player">
                 <h4>ENTER THE NAME OF THE PLAYER THAT YOU WANT TO delet:</h4>
                 <label for="edit-a-player">player's name :</label>
                 <input type="text" name="delet-a-player" id="player-delete-name" required></input>
             </div>
-
+            </form>
 
             <!-- <div id="add-a-player-to-pitch">
                 <div id="forwards" class="general-posistions">

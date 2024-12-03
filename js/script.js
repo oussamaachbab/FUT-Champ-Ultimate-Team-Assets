@@ -514,7 +514,7 @@ const players = {
 
 playersData.players.push(players);
 playersSplit(playersData.players);
-document.getElementById('add-a-goalkeeper').style.display = 'none';
+// document.getElementById('add-a-goalkeeper').style.display = 'none';
 })
 
 
@@ -555,7 +555,7 @@ const players = {
 
 playersData.players.push(players);
 playersSplit(playersData.players);
-document.getElementById('add-a-player').style.display = 'none';
+// document.getElementById('add-a-player').style.display = 'none';
 });
 
 
@@ -571,6 +571,7 @@ deletePlayerSubmit.addEventListener('click', () => {
   const playerIndex = playersData.players.findIndex(player => player.name.toLowerCase() === playerName.toLowerCase());
 
   if (playerIndex !== -1) {
+      // Remove player from the array
       playersData.players.splice(playerIndex, 1);
 
       playersSplit(playersData.players);
@@ -589,51 +590,12 @@ deletePlayerSubmit.addEventListener('click', () => {
     if (!existingMessage) {
         deleteSection.appendChild(ifplayerwasnotfound);
     }
-}
+  }
 });
+
 
 const deleteSection = document.getElementById('delete-a-player');
 deleteSection.appendChild(deletePlayerSubmit);
-
-
-
-// for(let i = 0 ; i < data.players.length ; i++){
-
-// if(players.position === "GK"){
-//   function goalKeppers(players) { 
-//       playersContainer.innerHTML = ""; 
-//       players.forEach((player) => {
-//         const playerCard = `
-//           <div class="test">
-//             <div class="total-rating">
-//               <h6><span>${player.rating}</span><br><span>${player.position}</span></h6>
-//             </div>
-//             <div class="player-img" style="background-image: url('${player.photo}')"></div>
-//             <div class="player-name">${player.name}</div>
-//             <div class="palyer-ratings">
-//               <div class="ratings-names">
-//                 <span>PAC</span> <span>SHO</span> <span>PAS</span>
-//                 <span>DRI</span> <span>DEF</span> <span>PHY</span>
-//               </div>
-//               <br>
-//               <span>${player.diving}</span>
-//               <span>${player.handling}</span>
-//               <span>${player.kicking}</span>
-//               <span>${player.reflexes}</span>
-//               <span>${player.speed}</span>
-//               <span>${player.positioning}</span>
-//             </div>
-//             <div class="flags">
-//               <div class="flag" style="background-image: url('${player.flag}')"></div>
-//               <div class="club" style="background-image: url('${player.logo}')"></div>
-//             </div>
-//           </div>`;
-//         playersContainer.innerHTML += playerCard;
-//       });
-//     }
-//   }else{ 
-
-
 
 
 function playersSplit(players) {
@@ -764,6 +726,20 @@ playerPositions.forEach((position) => {
   slot.dataset.position = position.position;
 
   slot.addEventListener('click', () => {
+    const isOccupied = slot.querySelector('.test-pitch');
+  
+    if (isOccupied) {
+      const removedPlayer = isOccupied.dataset.player;
+      // playersData.players.push(removedPlayer); 
+      slot.innerHTML = "+";
+      slot.style.border = "3px solid white";
+      slot.style.width = "4%";
+      slot.style.height = "4%";
+      playersSplit(playersData.players); 
+    return;
+    }
+
+
     const existingList = document.querySelector('.player-list');
     if (existingList) {
         existingList.remove();
@@ -808,8 +784,11 @@ playerPositions.forEach((position) => {
         playerCard.addEventListener('click', () => {
 
 
-          const currentLeft = parseFloat(slot.style.left);
-          slot.style.left = `${currentLeft - 4.5}%`;
+          // const currentLeft = parseFloat(slot.style.left);
+          // slot.style.left = `${currentLeft - 4.5}%`;
+          // slot.style.transition = 'left 0.5s ease-in-out';
+          // slot.style.position = "fix";
+
           
     
             slot.textContent = "";
@@ -872,6 +851,8 @@ playerPositions.forEach((position) => {
 
     document.addEventListener('click', closeList);
 });
+
+
 
   pitchContainer.appendChild(slot);
 });

@@ -109,7 +109,7 @@ body {
 .test {
     position: relative;
     width: 25%;
-    height: 150px;
+    height: 160px;
     background-image: url('src/assets/img/badge_gold.webp');
     background-size: contain;
     background-repeat: no-repeat;
@@ -145,6 +145,12 @@ body {
     top: 8%;
 }
 
+.test-pitch{
+    position: absolute;
+    right: 35%;
+    bottom: 30%;
+}
+
 .player-img-pitch{
     background-image: url('src/assets/img/i.png');
     position: absolute;
@@ -160,13 +166,13 @@ body {
 .player-img {
     background-image: url('src/assets/img/i.png');
     position: absolute;
-    top: 80%;
+    top: 43%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-size: contain;
     background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
+    width: 65%;
+    height: 50%;
 }
 
 .player-image{
@@ -214,17 +220,17 @@ body {
 .total-rating {
     color: black;
     font-size: small;
-    left: 22px;
-    top: 8px;
+    left: 15px;
+    top: 20px;
     position: absolute;
 }
 
 .player-name {
     color: black;
     position: absolute;
-    font-size: 0.5rem;
+    font-size: 0.4rem;
     top: 64%;
-    left: 27%;
+    left: 30%;
 }
 
 .palyer-ratings {
@@ -406,13 +412,32 @@ input{
     flex-direction: column;
 } */
 
-.player-img{
+/* .player-img{
     width: 35%;
-}
+} */
 
 @media (max-width: 1024px) {
     .pitch-container{
         box-shadow: none;
+    }
+
+    .test{
+        height: 160px;
+        width: 160px;
+    }
+
+    .palyer-ratings{
+        left: 33%;
+    }
+
+    .player-name{
+        left: 33%;
+        top: 65%;
+    }
+
+    .total-rating{
+        left: 27%;
+        top: 10%;
     }
 
     .test-pitch{
@@ -446,6 +471,14 @@ input{
         height: 150px;
     }
 
+
+    .player-img{
+        width: 40%;
+        height: 40%;
+    }
+
+    
+
     .avilable-palyers {
         justify-content: space-around;
     }
@@ -453,6 +486,14 @@ input{
     .pitch-slot {
         width: 40px;
         height: 40px;
+    }
+
+    .player-name{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        left: 33%;
+
     }
 }
 
