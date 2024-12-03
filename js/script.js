@@ -463,6 +463,9 @@ if (deleteaPlayer.style.display === 'none') {
 
 
 
+
+
+
 const searchInput = document.getElementById("search-a-player");
 
 searchInput.addEventListener("input", () => {
@@ -659,7 +662,60 @@ players.forEach((player) => {
 
 
 });
+
 }
+
+
+
+
+
+
+
+
+
+document.querySelector('.avilable-palyers').addEventListener('click', (event) => {
+  const playerCard = event.target.closest('.test');
+  if (!playerCard) return;
+
+  const playerName = playerCard.querySelector('.player-name').textContent;
+
+  const player = playersData.players.find(p => p.name === playerName);
+  if (!player) return;
+
+  const editPopup = document.getElementById('edit-palyer');
+  editPopup.style.display = 'block';
+
+  document.querySelector('input[name="player-name-edit"]').value = player.name;
+  document.querySelector('input[name="player-photo-edit"]').value = player.photo;
+  document.querySelector('input[name="player-total-rating-edit"]').value = player.rating;
+  document.querySelector('input[name="player-club-logo-edit"]').value = player.logo;
+
+  const submitButton = document.getElementById('submit-edit-player');
+  submitButton.onclick = () => {
+      player.name = document.querySelector('input[name="player-name-edit"]').value;
+      player.photo = document.querySelector('input[name="player-photo-edit"]').value;
+      player.rating = document.querySelector('input[name="player-total-rating-edit"]').value;
+      player.logo = document.querySelector('input[name="player-club-logo-edit"]').value;
+
+      editPopup.style.display = 'none';
+
+      playersSplit(playersData.players);
+  };
+});
+
+document.getElementById('edit-palyer').addEventListener('click', (event) => {
+  if (event.target.id === 'edit-palyer') {
+      document.getElementById('edit-palyer').style.display = 'none';
+  }
+});
+
+
+
+
+
+
+
+
 
 
 
